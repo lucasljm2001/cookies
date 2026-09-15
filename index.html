@@ -7,45 +7,39 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #f5f5f5; color: #333; max-width: 480px; margin: 0 auto; min-height: 100vh; }
-        
-        /* Banner & Header */
+
         .header-banner { background-color: #111; padding: 25px 15px; text-align: center; position: relative; }
-        .logo-box { background: white; border: 2px solid #000; border-radius: 50%; width: 90px; height: 90px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
-        .logo-box img { width: 75px; height: 75px; border: 2px dashed #000; padding: 5px; box-sizing: border-box; }
-        
+        .logo-box { background: white; border: 2px solid #000; border-radius: 50%; width: 90px; height: 90px; margin: 0 auto; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+
         .store-info { background: white; padding: 15px; text-align: center; border-bottom: 1px solid #eee; }
         .store-title { font-size: 20px; font-weight: bold; margin-bottom: 8px; }
         .store-bio { font-size: 13px; color: #555; line-height: 1.5; }
-        
-        /* Search & Categories */
-        .controls { padding: 12px 15px; background: white; border-bottom: 1px solid #eee; display: flex; gap: 10px; }
-        .search-bar { flex: 1; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: #fafafa; }
-        
-        /* Category Accordion */
+
+        .controls { padding: 12px 15px; background: white; border-bottom: 1px solid #eee; display: flex; flex-direction: column; gap: 10px; }
+        .search-bar, .config-input { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: #fafafa; }
+
         .category-header { background: white; padding: 14px 15px; margin-top: 10px; font-weight: 600; display: flex; justify-content: space-between; border-bottom: 1px solid #eee; cursor: pointer; }
-        
-        /* Product Grid */
+
         .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; }
-        .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-        .product-img { width: 100%; height: 140px; background-color: #eee; object-fit: cover; }
-        .product-details { padding: 10px; }
-        .product-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; color: #222; }
+        .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+        .product-img { width: 100%; height: 140px; object-fit: cover; }
+        .product-details { padding: 10px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+        .product-name { font-size: 14px; font-weight: 600; color: #222; }
         .product-price { font-size: 14px; color: #00875a; font-weight: bold; }
-        
-        /* Sticky Cart Bar */
+        .add-button { background: #111; color: #fff; border: none; border-radius: 6px; padding: 8px; cursor: pointer; font-size: 13px; }
+
         .cart-bar { position: fixed; bottom: 0; width: 100%; max-width: 480px; background: #d32f2f; color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 15px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <!-- Header / Logo -->
     <div class="header-banner">
         <div class="logo-box">
-            <div style="font-weight:900; font-size: 10px; text-align: center; border: 2px solid black; padding: 5px;">SUNDAY<br>& CO</div>
+            <img src="assets/images/logo-sunday-co.svg" alt="Logo Sunday & Co">
         </div>
     </div>
 
-    <!-- Info del Negocio -->
     <div class="store-info">
         <div class="store-title">Sunday & Co</div>
         <div class="store-bio">
@@ -56,88 +50,175 @@
         </div>
     </div>
 
-    <!-- Barra de búsqueda -->
     <div class="controls">
         <input type="text" class="search-bar" placeholder="🔍 Buscar producto...">
+        <input type="text" id="whatsapp-number" class="config-input" value="5491100000000" placeholder="Número WhatsApp (solo números)">
     </div>
 
-    <!-- Sección Budines -->
     <div class="category-header">
         <span>Budines</span>
         <span>▼</span>
     </div>
     <div class="product-grid">
-        <div class="product-card">
-            <div class="product-img" style="background: #ffe0b2;"></div>
+        <div class="product-card" data-name="Budín de Naranja" data-price="4500">
+            <img class="product-img" src="assets/images/budin-naranja.svg" alt="Budín de Naranja">
             <div class="product-details">
                 <div class="product-name">Budín de Naranja</div>
                 <div class="product-price">$ 4.500,00</div>
+                <button class="add-button" type="button">Agregar</button>
             </div>
         </div>
-        <div class="product-card">
-            <div class="product-img" style="background: #fff9c4;"></div>
+        <div class="product-card" data-name="Budín de Vainilla" data-price="4200">
+            <img class="product-img" src="assets/images/budin-vainilla.svg" alt="Budín de Vainilla">
             <div class="product-details">
                 <div class="product-name">Budín de Vainilla</div>
                 <div class="product-price">$ 4.200,00</div>
+                <button class="add-button" type="button">Agregar</button>
             </div>
         </div>
-        <div class="product-card">
-            <div class="product-img" style="background: #d7ccc8;"></div>
+        <div class="product-card" data-name="Budín de Chocolate" data-price="4800">
+            <img class="product-img" src="assets/images/budin-chocolate.svg" alt="Budín de Chocolate">
             <div class="product-details">
                 <div class="product-name">Budín de Chocolate</div>
                 <div class="product-price">$ 4.800,00</div>
+                <button class="add-button" type="button">Agregar</button>
             </div>
         </div>
-        <div class="product-card">
-            <div class="product-img" style="background: #f5f5f5;"></div>
+        <div class="product-card" data-name="Budín Marmolado" data-price="4600">
+            <img class="product-img" src="assets/images/budin-marmolado.svg" alt="Budín Marmolado">
             <div class="product-details">
                 <div class="product-name">Budín Marmolado</div>
                 <div class="product-price">$ 4.600,00</div>
+                <button class="add-button" type="button">Agregar</button>
             </div>
         </div>
     </div>
 
-    <!-- Sección Cookies -->
     <div class="category-header">
         <span>Cookies</span>
         <span>▼</span>
     </div>
     <div class="product-grid" style="padding-bottom: 60px;">
-        <div class="product-card">
-            <div class="product-img" style="background: #ffcdd2;"></div>
+        <div class="product-card" data-name="Cookie Red Velvet" data-price="2800">
+            <img class="product-img" src="assets/images/cookie-red-velvet.svg" alt="Cookie Red Velvet">
             <div class="product-details">
                 <div class="product-name">Cookie Red Velvet</div>
                 <div class="product-price">$ 2.800,00</div>
+                <button class="add-button" type="button">Agregar</button>
             </div>
         </div>
-        <div class="product-card">
-            <div class="product-img" style="background: #bcaaa4;"></div>
+        <div class="product-card" data-name="Cookie de Nutella" data-price="3000">
+            <img class="product-img" src="assets/images/cookie-nutella.svg" alt="Cookie de Nutella">
             <div class="product-details">
                 <div class="product-name">Cookie de Nutella</div>
                 <div class="product-price">$ 3.000,00</div>
+                <button class="add-button" type="button">Agregar</button>
             </div>
         </div>
-        <div class="product-card">
-            <div class="product-img" style="background: #ffe0b2;"></div>
+        <div class="product-card" data-name="Cookie Chips de Chocolate" data-price="2500">
+            <img class="product-img" src="assets/images/cookie-chips.svg" alt="Cookie Chips de Chocolate">
             <div class="product-details">
                 <div class="product-name">Cookie Chips de Chocolate</div>
                 <div class="product-price">$ 2.500,00</div>
+                <button class="add-button" type="button">Agregar</button>
             </div>
         </div>
-        <div class="product-card">
-            <div class="product-img" style="background: #a1887f;"></div>
+        <div class="product-card" data-name="Cookie de Chocolate" data-price="2600">
+            <img class="product-img" src="assets/images/cookie-chocolate.svg" alt="Cookie de Chocolate">
             <div class="product-details">
                 <div class="product-name">Cookie de Chocolate</div>
                 <div class="product-price">$ 2.600,00</div>
+                <button class="add-button" type="button">Agregar</button>
             </div>
         </div>
     </div>
 
-    <!-- Botón Pedido -->
-    <div class="cart-bar">
-        <span>Tu pedido (1)</span>
-        <span>Iniciar compra</span>
+    <div class="cart-bar" id="cart-bar">
+        <span id="cart-summary">Tu pedido (0)</span>
+        <span id="cart-total">Iniciar compra</span>
     </div>
+
+    <script>
+        const cart = new Map();
+        const cartBar = document.getElementById('cart-bar');
+        const cartSummary = document.getElementById('cart-summary');
+        const cartTotal = document.getElementById('cart-total');
+        const whatsappNumberInput = document.getElementById('whatsapp-number');
+
+        const moneyFormatter = new Intl.NumberFormat('es-AR', {
+            style: 'currency',
+            currency: 'ARS',
+            maximumFractionDigits: 0
+        });
+
+        function renderCart() {
+            let items = 0;
+            let total = 0;
+
+            cart.forEach((item) => {
+                items += item.quantity;
+                total += item.price * item.quantity;
+            });
+
+            cartSummary.textContent = `Tu pedido (${items})`;
+            cartTotal.textContent = items > 0 ? moneyFormatter.format(total) : 'Iniciar compra';
+        }
+
+        function addToCart(card) {
+            const name = card.dataset.name;
+            const price = Number(card.dataset.price);
+            const current = cart.get(name);
+
+            if (current) {
+                current.quantity += 1;
+            } else {
+                cart.set(name, { name, price, quantity: 1 });
+            }
+
+            renderCart();
+        }
+
+        function buildWhatsappMessage() {
+            const lines = ['Hola Sunday & Co, quiero hacer este pedido:'];
+            let total = 0;
+
+            cart.forEach((item) => {
+                lines.push(`- ${item.name} x${item.quantity}`);
+                total += item.price * item.quantity;
+            });
+
+            lines.push(`Total: ${moneyFormatter.format(total)}`);
+            lines.push('¡Gracias!');
+
+            return lines.join('\n');
+        }
+
+        document.querySelectorAll('.add-button').forEach((button) => {
+            button.addEventListener('click', (event) => {
+                const card = event.currentTarget.closest('.product-card');
+                addToCart(card);
+            });
+        });
+
+        cartBar.addEventListener('click', () => {
+            if (cart.size === 0) {
+                alert('Agregá productos antes de iniciar la compra.');
+                return;
+            }
+
+            const whatsappNumber = whatsappNumberInput.value.replace(/\D/g, '');
+            if (!whatsappNumber) {
+                alert('Completá un número de WhatsApp válido.');
+                whatsappNumberInput.focus();
+                return;
+            }
+
+            const text = encodeURIComponent(buildWhatsappMessage());
+            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+        });
+
+        renderCart();
+    </script>
 
 </body>
 </html>

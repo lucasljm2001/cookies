@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#ffe0b2"/>
+  <circle cx="180" cy="160" r="16" fill="#8d5c3d"/>
+  <circle cx="300" cy="210" r="14" fill="#8d5c3d"/>
+  <circle cx="420" cy="150" r="18" fill="#8d5c3d"/>
+  <text x="300" y="300" text-anchor="middle" font-size="44" font-family="Arial" font-weight="700" fill="#6b3f25">Cookie Chips</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#ececec"/>
+  <path d="M0 120 Q150 70 300 120 T600 120 V400 H0 Z" fill="#cfcfcf"/>
+  <path d="M0 190 Q150 140 300 190 T600 190 V400 H0 Z" fill="#b6b6b6"/>
+  <text x="300" y="80" text-anchor="middle" font-size="44" font-family="Arial" font-weight="700" fill="#5c5c5c">Budín Marmolado</text>
+</svg>
